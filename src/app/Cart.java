@@ -111,7 +111,8 @@ public class Cart {
 
     }
 
-    private int calculateTotalPrice() {
+    // 주문 출력 시에도 사용되므로 접근제어자 protected 로.
+    protected int calculateTotalPrice() {
         int totalPrice = 0;
         for(Product product : items) {
             totalPrice += product.getPrice();
@@ -119,7 +120,8 @@ public class Cart {
         return totalPrice;
     }
 
-    private void printCartItemDetails() {
+    // 주문 출력 시에도 사용되므로 접근제어자 protected 로.
+    protected void printCartItemDetails() {
         // 상품 종류에 따라 출력되는 옵션이 다르다.
 
         for(Product product : items) {
