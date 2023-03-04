@@ -1,5 +1,11 @@
 package app;
 
+import app.discount.Discount;
+import app.discount.discountCondition.CozDiscountCondition;
+import app.discount.discountCondition.DiscountCondition;
+import app.discount.discountCondition.KidDiscountCondition;
+import app.discount.discountPolicy.FixedAmountDiscountPolicy;
+import app.discount.discountPolicy.FixedRateDiscountPolicy;
 import app.product.Product;
 import app.product.ProductRepository;
 
@@ -7,9 +13,17 @@ import java.util.Scanner;
 
 public class OrderApp { // 주문 프로그램 메인 로직
     Scanner scanner = new Scanner(System.in);
-    ProductRepository productRepository = new ProductRepository();
-    Menu menu = new Menu(productRepository.getAllProducts());
-    Cart cart = new Cart(productRepository, menu);
+    ProductRepository productRepository;
+    Menu menu;
+    Cart cart;
+    Order order;
+
+    public OrderApp(ProductRepository productRepository, Menu menu, Cart cart, Order order) {
+        this.productRepository = productRepository;
+        this.menu = menu;
+        this.cart = cart;
+        this.order = order;
+    }
 
     public void start() {
 
@@ -24,9 +38,8 @@ public class OrderApp { // 주문 프로그램 메인 로직
 
             // 사용자의 입력이 + 라면
             if(input.equals("+")) {
-                // 주문하기
-                // - 할인 적용
-                // - 주문 메뉴 및 금액 출력
+                // 주문하기(할인 적용 /주문 메뉴 및 금액 출력)
+                order.makeOrder();
                 break;
             }
 
