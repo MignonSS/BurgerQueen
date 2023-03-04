@@ -52,7 +52,7 @@ public class Menu {
     }
 
     // Cart 에서 사용해야 하므로 접근제어자 protected 로 설정
-    private void printDrinks(boolean printPrice) {
+    protected void printDrinks(boolean printPrice) {
         System.out.println("🥤 음료");
         for(Product product : products) {
             if(product instanceof Drink) {

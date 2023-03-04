@@ -9,6 +9,7 @@ public class OrderApp { // 주문 프로그램 메인 로직
     Scanner scanner = new Scanner(System.in);
     ProductRepository productRepository = new ProductRepository();
     Menu menu = new Menu(productRepository.getAllProducts());
+    Cart cart = new Cart(productRepository, menu);
 
     public void start() {
 
@@ -34,11 +35,13 @@ public class OrderApp { // 주문 프로그램 메인 로직
 
                 // 사용자가 입력이 0 이라면
                 if(menuNumber == 0) {
-                    // 장바구니 메뉴 출력
+                    // 장바구니에 담긴 메뉴 출력
+                    cart.printCart();
                 }
                 // 사용자가 입력이 상품 메뉴 번호일 때
                 else if(1 <= menuNumber && menuNumber <= productRepository.getAllProducts().length) {
                     // 장바구니에 메뉴 담기
+                    cart.addToCart(menuNumber);
                 }
 
             }
